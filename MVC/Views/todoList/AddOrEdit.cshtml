@@ -20,8 +20,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Date)
             @*<input type="date" value="model.Date" style="margin-left:10px;width:170px"/>*@
+            @{ 
+                string replace = Model.Date.Replace(".", "-");
+                string[] array = new string[3];
+                array[0] = replace.Substring(6, 4);
+                array[1] = replace.Substring(2, 4);
+                array[2] = replace.Substring(0, 2);
+                string sum = array[0] + array[1] + array[2];
+            }
             @Html.TextBoxFor(model => model.Date,
-           new { @type = "date", @Value = Model.Date.ToString("yyyy-MM-dd") })
+           new { @type = "date", @Value = sum})
             @Html.ValidationMessageFor(model => model.Date)
         </div>
        

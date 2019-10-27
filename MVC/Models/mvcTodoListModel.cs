@@ -13,6 +13,6 @@ namespace MVC.Models
         [Required(ErrorMessage = "This Field is Required")]
         public string Name { get; set; }
         [Required(ErrorMessage = "This Field is Required")]
-        public System.DateTime Date { get; set; }
+        public string Date { get; set; }
     }
 }
