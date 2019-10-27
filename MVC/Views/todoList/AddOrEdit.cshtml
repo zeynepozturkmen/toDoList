@@ -21,12 +21,17 @@
             @Html.LabelFor(model => model.Date)
             @*<input type="date" value="model.Date" style="margin-left:10px;width:170px"/>*@
             @{ 
-                string replace = Model.Date.Replace(".", "-");
-                string[] array = new string[3];
-                array[0] = replace.Substring(6, 4);
-                array[1] = replace.Substring(2, 4);
-                array[2] = replace.Substring(0, 2);
-                string sum = array[0] + array[1] + array[2];
+                string sum = null;
+                if (Model.Date!=null)
+                {
+                    string replace = Model.Date.Replace(".", "-");
+                    string[] array = new string[3];
+                    array[0] = replace.Substring(6, 4);
+                    array[1] = replace.Substring(2, 4);
+                    array[2] = replace.Substring(0, 2);
+                     sum = array[0] + array[1] + array[2];
+                }
+
             }
             @Html.TextBoxFor(model => model.Date,
            new { @type = "date", @Value = sum})
