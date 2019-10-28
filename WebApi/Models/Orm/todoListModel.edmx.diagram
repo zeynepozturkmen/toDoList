@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="77d08ed85b194cbb8d396bdce37d4356" Name="Diagram1">
+      <Diagram DiagramId="35bff8a292404d05a7e2e0414d0f99db" Name="Diagram1">
         <EntityTypeShape EntityType="todoListDBModel.todoList" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>

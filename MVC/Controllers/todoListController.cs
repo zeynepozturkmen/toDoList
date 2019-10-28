@@ -12,6 +12,7 @@ namespace MVC.Controllers
     {
 
         // GET: todoList
+        //Tüm listeyi Getiriyor.
         public ActionResult Index()
         {
             IEnumerable<mvcTodoListModel> list;
@@ -20,6 +21,7 @@ namespace MVC.Controllers
             return View(list);
         }
 
+        //Yapılacak tarihi bugün olan kayıtları getiryor.
         public ActionResult GetDateToday()
         {
             IEnumerable<mvcTodoListModel> list;
@@ -28,7 +30,7 @@ namespace MVC.Controllers
             return View("Index", list);
         }
 
-
+       //Kayıt ekleme ya da güncelleme view'i
         public ActionResult AddOrEdit(int id = 0)
         {
             if (id == 0)
@@ -39,9 +41,12 @@ namespace MVC.Controllers
                 return View(response.Content.ReadAsAsync<mvcTodoListModel>().Result);
             }
         }
+
+        //Kayıt yoksa ekliyor , varsa güncelliyor.
         [HttpPost]
         public ActionResult AddOrEdit(mvcTodoListModel model)
         {
+            //İnput date'ten gelen tarihi formatlayıp "27.10.2019" formatında string olarak veri tabanına kaydediyorum.
             string s = model.Date.ToString().Substring(0, 10);
             s = s.Replace('-', '.');
 
@@ -67,6 +72,8 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
+
+        //id'si gönderilen kayıt siliniyor.
         public ActionResult Delete(int id)
         {
             HttpResponseMessage response = GlobalVariables.WebApiClient.DeleteAsync("todoList/" + id.ToString()).Result;

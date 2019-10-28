@@ -18,9 +18,9 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Date)
-            @*<input type="date" value="model.Date" style="margin-left:10px;width:170px"/>*@
+            @Html.LabelFor(model => model.Date)        
             @{ 
+                //Veri tabanından gelen date degeri string olarak : "27.10.2019" olarak gözüküyor.Datepicker'da tarih "2019/10/27" olarak gözüküyor.Veri tabanından gelen bu degeri formatlayıp datepicker'da gözükmesini sağlıyorum. 
                 string sum = null;
                 if (Model.Date!=null)
                 {
@@ -34,7 +34,7 @@
 
             }
             @Html.TextBoxFor(model => model.Date,
-           new { @type = "date", @Value = sum})
+           new { @type = "date", @Value = sum, style = "margin-left:10px;width: 170px;" })
             @Html.ValidationMessageFor(model => model.Date)
         </div>
        

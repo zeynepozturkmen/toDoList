@@ -7,14 +7,17 @@
 <br />
 <p>
     <a href="@Url.Action("AddOrEdit","todoList")" class="btn btn-default"><i class="fa fa-plus"></i> Create New</a>
-    <a href="@Url.Action("GetDateToday","todoList")" class="btn btn-default"><i class="fa fa-plus"></i> Get Date Today</a>
-    <a href="@Url.Action("Index","todoList")" class="btn btn-default"><i class="fa fa-plus"></i>All Date</a>
+    <a href="@Url.Action("GetDateToday","todoList")" class="btn btn-default"><i class="fa fa-calendar"></i> Today</a>
+    <a href="@Url.Action("Index","todoList")" class="btn btn-default"><i class="fa fa-list"></i> Get Whole List</a>
 </p>
 <table class="table table-striped">
     <thead class="table-heading">
 
     </thead>
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -26,24 +29,28 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
 
-                <a href="@Url.Action("AddOrEdit", "todoList", new { id = item.Id})" class="btn btn-default"><i class="fa fa-pencil"></i>  Edit</a>
-                <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="fa fa-trash"></i>  Delete</a>
-            </td>
-        </tr>
+            <a href="@Url.Action("AddOrEdit", "todoList", new { id = item.Id})" class="btn btn-default"><i class="fa fa-pencil"></i>  Edit</a>
+            <a onclick="Delete(@item.Id)" class="btn btn-default"><i class="fa fa-trash"></i>  Delete</a>
+        </td>
+    </tr>
     }
 
 </table>
 
 
+<!--kayıt eklendi ve silinsin mi uyarı mesajları-->
 @section scripts{
     <script>
         $(function () {
